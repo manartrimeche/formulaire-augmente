@@ -16,7 +16,7 @@ function App() {
     setIsSubmitting(true);
 
     try {
-      await api.createSubmission({
+      const response = await api.createSubmission({
         mission_type: data.missionType,
         first_name: data.firstName,
         last_name: data.lastName,
@@ -27,11 +27,13 @@ function App() {
         student_count: data.studentCount,
       });
 
+      console.log('Submission successful:', response);
       setSubmittedData(data);
       setAppState('confirmation');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+      const errorMessage = error instanceof Error ? error.message : 'Une erreur est survenue';
+      alert(`Erreur: ${errorMessage}. Veuillez vérifier votre connexion et réessayer.`);
     } finally {
       setIsSubmitting(false);
     }

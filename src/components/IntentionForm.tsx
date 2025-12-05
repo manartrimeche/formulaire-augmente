@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Send, Heart, Users, MessageCircle, Info, Sparkles, Shield, Zap } from 'lucide-react';
+import { Send, Heart, Users, MessageCircle, Info, Sparkles, Zap, TrendingUp } from 'lucide-react';
 import type { MissionType, FormData } from '../types';
 
 interface IntentionFormProps {
@@ -262,6 +262,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
           {formStrength > 0 && (
             <div className="text-right">
               <div className="flex items-center gap-2 mb-1">
+                <TrendingUp className="w-5 h-5 text-emerald-600" />
                 <span className="text-sm font-semibold text-gray-700">Force du profil</span>
               </div>
               <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">

@@ -1,4 +1,13 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const getAPIBaseUrl = () => {
+  // En production sur Vercel
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return '/api';
+  }
+  // En développement local
+  return import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+};
+
+const API_BASE_URL = getAPIBaseUrl();
 
 export interface FormSubmissionData {
   mission_type: string;
@@ -14,19 +23,28 @@ export interface FormSubmissionData {
 export const api = {
   // Create a new submission
   async createSubmission(data: FormSubmissionData) {
-    const response = await fetch(`${API_BASE_URL}/submissions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      const url = `${API_BASE_URL}/submissions`;
+      console.log('API URL:', url);
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-    if (!response.ok) {
-      throw new Error('Failed to submit form');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || `Erreur ${response.status}: ${response.statusText}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error('API Error:', error);
+      throw error;
     }
-
-    return response.json();
   },
 
   // Get all submissions
