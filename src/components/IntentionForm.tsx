@@ -13,7 +13,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
+    Numero: '',
     schoolName: '',
     studentCount: undefined,
     message: '',
@@ -42,7 +42,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
     if (formData.firstName.length >= 2) strength += 15;
     if (formData.lastName.length >= 2) strength += 15;
     if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) strength += 20;
-    if (formData.phone) strength += 10;
+    if (formData.Numero) strength += 10;
     if (formData.schoolName) strength += 15;
     if (formData.studentCount && formData.studentCount > 0) strength += 10;
     if (formData.message && formData.message.length >= 20) strength += 15;
@@ -329,7 +329,6 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
                   showSuccess.firstName ? 'border-green-500' :
                   'border-gray-300'
                 }`}
-                placeholder="Ex: Marie"
               />
               {showSuccess.firstName && (
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -356,7 +355,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
                   showSuccess.lastName ? 'border-green-500' :
                   'border-gray-300'
                 }`}
-                placeholder="Ex: Dupont"
+              
               />
               {showSuccess.lastName && (
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -384,7 +383,6 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
                 showSuccess.email ? 'border-green-500' :
                 'border-gray-300'
               }`}
-              placeholder="exemple@ecole.fr"
             />
             {showSuccess.email && (
               <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -398,11 +396,11 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Téléphone (optionnel)</label>
           <input
-            type="tel"
-            value={formData.phone || ''}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            type="number"
+            value={formData.Numero || ''}
+            onChange={(e) => setFormData({ ...formData, Numero: e.target.value })}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            placeholder="+33 6 12 34 56 78"
+            placeholder="+216 12 345 678"
           />
         </div>
 
@@ -423,7 +421,6 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
               type="number"
               value={formData.studentCount || ''}
               onChange={(e) => setFormData({ ...formData, studentCount: e.target.value ? parseInt(e.target.value) : undefined })}
-              placeholder="Ex: 500"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             />
           </div>
@@ -435,12 +432,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
           <div className="flex items-start gap-3 relative z-10">
             <Sparkles className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0 animate-pulse" />
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <h4 className="font-semibold text-blue-900">{currentMissionInsights.icon} {currentMissionInsights.tip}</h4>
-                <span className="text-xs bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-0.5 rounded-full font-semibold animate-pulse">
-                  IA 🤖
-                </span>
-              </div>
+              
               <div className="flex flex-wrap gap-2">
                 {currentMissionInsights.keywords.map((keyword, idx) => (
                   <button

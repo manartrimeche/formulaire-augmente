@@ -28,47 +28,47 @@ export default function ConfirmationPage({ formData, onNewSubmission }: Confirma
     switch (formData.missionType) {
       case 'independance':
         return {
-          title: `Salutations, ${formData.firstName} ! 👋`,
-          subtitle: 'Ton message a bien été acheminé vers nos serveurs centraux 📡',
-          message: `Bravo pour ton engagement envers l'indépendance numérique ! Ton demande de nous aider à libérer ton établissement des Big Tech a été enregistrée avec succès. Nos "Agents de Support" 🕵️ te répondront sous peu avec un plan d'action personnalisé.`,
+          title: `Bienvenue, ${formData.firstName} !`,
+          subtitle: 'Ton message a bien été acheminé vers nos serveurs centraux ',
+          message: `Bravo pour ton engagement envers l'indépendance numérique ! Ton demande de nous aider à libérer ton établissement des Big Tech a été enregistrée avec succès. Nos "Agents de Support" te répondront sous peu avec un plan d'action personnalisé.`,
           impact: 'Ensemble, libérons nos écoles des géants du web pour une numérique plus libre et responsable.',
-          annualGoal: `🏆 Objectif NIRD ${currentYear} : Accompagner 50 établissements vers l'indépendance numérique`,
-          yearMention: `Ton soutien en ${currentYear} est crucial pour notre progression ! 📈`,
+          annualGoal: `Objectif NIRD ${currentYear} : Accompagner 50 établissements vers l'indépendance numérique`,
+          yearMention: `Ton soutien en ${currentYear} est crucial pour notre progression !`,
           followUp: `Reste connecté pour suivre nos exploits tout au long de l'année ${currentYear} !`,
         };
       case 'responsabilite':
         return {
-          title: `Un immense 'GG', ${formData.firstName} ! 🏆`,
-          subtitle: 'Merci pour ton engagement éthique 💙',
+          title: `Un immense 'GG', ${formData.firstName} ! `,
+          subtitle: 'Merci pour ton engagement éthique ',
           message: `Ton établissement souhaite mettre en place une gouvernance éthique du numérique. Nous avons noté ton engagement pour la protection des données et la responsabilité éthique. Nos experts te proposeront bientôt des solutions robustes pour sécuriser les données de ton établissement.`,
           impact: `Objectif NIRD : Mettre en place une gouvernance éthique du numérique dans 100 établissements`,
-          annualGoal: `🔐 En ${currentYear}, nous travaillons à protéger les données de 10 000+ étudiants`,
+          annualGoal: ` En ${currentYear}, nous travaillons à protéger les données de 10 000+ étudiants`,
           yearMention: `Grâce à toi, nous pouvons avancer sur le projet de sécurisation des données cette année ${currentYear}`,
           followUp: `Suis notre progression vers un numérique plus éthique et responsable tout au long de l'année ${currentYear} !`,
         };
       case 'durabilite':
         return {
-          title: `Merci pour ton engagement écologique, ${formData.firstName} ! 🌱`,
-          subtitle: 'Pour une planète plus verte 🌍',
+          title: `Merci pour ton engagement écologique, ${formData.firstName} ! `,
+          subtitle: 'Pour une planète plus verte ',
           message: `Ton école souhaite réduire son empreinte numérique et environnementale. Nous avons bien reçu ta demande et nous allons te proposer des actions concrètes pour une transition durable. Ensemble, transformons le numérique éducatif !`,
           impact: `Réduire de 40% l'empreinte carbone du numérique éducatif`,
-          annualGoal: `🌿 Objectif ${currentYear} : Aider 100 établissements à devenir numériquement durables`,
-          yearMention: `Ton implication en ${currentYear} nous rapproche de la neutralité carbone ! ♻️`,
+          annualGoal: ` Objectif ${currentYear} : Aider 100 établissements à devenir numériquement durables`,
+          yearMention: `Ton implication en ${currentYear} nous rapproche de la neutralité carbone ! `,
           followUp: `Suis notre chemin vers un numérique durable tout au long de l'année ${currentYear} !`,
         };
       case 'apprentissage':
         return {
-          title: `Excellent, ${formData.firstName}, investissons dans les compétences ! 🎓`,
-          subtitle: 'Former pour transformer 📚',
+          title: `Excellent, ${formData.firstName}, investissons dans les compétences ! `,
+          subtitle: 'Former pour transformer ',
           message: `Ton établissement veut renforcer ses capacités en numérique responsable. Nous nous engageons à te fournir des ressources de formation, des webinaires exclusifs et un accompagnement personnalisé pour monter en compétences.`,
           impact: `Former 1000 éducateurs aux bonnes pratiques du numérique durable`,
-          annualGoal: `📖 Objectif NIRD ${currentYear} : Certifier 500+ professionnels en numérique responsable`,
+          annualGoal: ` Objectif NIRD ${currentYear} : Certifier 500+ professionnels en numérique responsable`,
           yearMention: `En ${currentYear}, ensemble créons des leaders du numérique responsable !`,
           followUp: `Reste connecté à nos ressources pédagogiques tout au long de l'année ${currentYear} !`,
         };
       default:
         return {
-          title: `Merci ${formData.firstName} ! 🙏`,
+          title: `Merci ${formData.firstName} !`,
           subtitle: 'Ton engagement a été enregistré',
           message: `Votre engagement a été enregistré avec succès.`,
           impact: "Ensemble pour un numérique plus responsable.",
@@ -126,7 +126,7 @@ export default function ConfirmationPage({ formData, onNewSubmission }: Confirma
                   <div className="text-left">
                     <h3 className="font-semibold text-gray-800 mb-2">{message.annualGoal}</h3>
                     <p className="text-gray-700 text-sm mt-2">{message.yearMention}</p>
-                    <p className="text-gray-700 text-sm mt-2">✨ {message.followUp}</p>
+                    <p className="text-gray-700 text-sm mt-2">{message.followUp}</p>
                   </div>
                 </div>
               </div>
@@ -137,10 +137,10 @@ export default function ConfirmationPage({ formData, onNewSubmission }: Confirma
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-gray-500 mb-1">Pilier</p>
                   <p className="font-semibold text-gray-800 capitalize">
-                    {formData.missionType === 'independance' ? '🔓 Indépendance' :
-                     formData.missionType === 'responsabilite' ? '⚖️ Responsabilité' :
-                     formData.missionType === 'durabilite' ? '🌍 Durabilité' :
-                     formData.missionType === 'apprentissage' ? '📚 Apprentissage' :
+                    {formData.missionType === 'independance' ? ' Indépendance' :
+                     formData.missionType === 'responsabilite' ? ' Responsabilité' :
+                     formData.missionType === 'durabilite' ? 'Durabilité' :
+                     formData.missionType === 'apprentissage' ? 'Apprentissage' :
                      'NIRD'}
                   </p>
                 </div>

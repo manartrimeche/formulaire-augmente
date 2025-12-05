@@ -5,7 +5,7 @@ export interface IFormSubmission extends Document {
   first_name: string;
   last_name: string;
   email: string;
-  phone?: string;
+  Numero?: string;
   message?: string;
   school_name?: string;
   student_count?: number;
@@ -34,7 +34,7 @@ const FormSubmissionSchema = new Schema<IFormSubmission>({
     trim: true,
     lowercase: true,
   },
-  phone: {
+  Numero: {
     type: String,
     trim: true,
   },

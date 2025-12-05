@@ -5,7 +5,7 @@ export interface FormData {
   firstName: string;
   lastName: string;
   email: string;
-  phone?: string;
+  Numero?: string;
   message?: string;
   schoolName?: string;
   studentCount?: number;
@@ -20,7 +20,7 @@ export interface Submission {
   first_name: string;
   last_name: string;
   email: string;
-  phone?: string;
+  Numero?: string;
   message?: string;
   school_name?: string;
   student_count?: number;

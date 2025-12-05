@@ -5,7 +5,7 @@ export interface FormSubmissionData {
   first_name: string;
   last_name: string;
   email: string;
-  phone?: string;
+  Numero?: string;
   message?: string;
   school_name?: string;
   student_count?: number;

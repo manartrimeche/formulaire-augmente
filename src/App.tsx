@@ -21,7 +21,7 @@ function App() {
         first_name: data.firstName,
         last_name: data.lastName,
         email: data.email,
-        phone: data.phone,
+        Numero: data.Numero,
         message: data.message,
         school_name: data.schoolName,
         student_count: data.studentCount,

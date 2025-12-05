@@ -39,7 +39,7 @@ router.post('/', async (req: Request, res: Response) => {
       first_name,
       last_name,
       email,
-      phone,
+      Numero,
       message,
       school_name,
       student_count
@@ -57,7 +57,7 @@ router.post('/', async (req: Request, res: Response) => {
       first_name,
       last_name,
       email,
-      phone,
+      Numero,
       message,
       school_name,
       student_count,
