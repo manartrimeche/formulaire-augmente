@@ -185,7 +185,7 @@ PORT=3000
 
 ## Structure des fichiers
 
-```
+```bash
 server/
 ├── index.ts              # Point d'entrée du serveur
 ├── db/
