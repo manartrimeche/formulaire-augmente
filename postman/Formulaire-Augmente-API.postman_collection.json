@@ -1,0 +1,261 @@
+{
+  "info": {
+    "name": "Formulaire Augmenté API",
+    "description": "Collection Postman pour tester l'API du formulaire augmenté de la Nuit de l'Info 2025",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Vérifie que le serveur est en ligne"
+      }
+    },
+    {
+      "name": "Submissions",
+      "item": [
+        {
+          "name": "Get All Submissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Récupère toutes les soumissions de formulaire"
+          }
+        },
+        {
+          "name": "Get Submission by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/submissions/:id",
+              "host": ["{{base_url}}"],
+              "path": ["submissions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{submission_id}}",
+                  "description": "ID de la soumission"
+                }
+              ]
+            },
+            "description": "Récupère une soumission spécifique par son ID"
+          }
+        },
+        {
+          "name": "Create Submission - Contact",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const response = pm.response.json();",
+                  "    pm.environment.set('submission_id', response.id);",
+                  "    pm.test('Submission created successfully', function() {",
+                  "        pm.expect(response.message).to.equal('Submission created successfully');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_type\": \"contact\",\n  \"first_name\": \"Jean\",\n  \"last_name\": \"Dupont\",\n  \"email\": \"jean.dupont@example.com\",\n  \"message\": \"Je souhaite obtenir plus d'informations sur vos services.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Crée une nouvelle soumission de type Contact"
+          }
+        },
+        {
+          "name": "Create Submission - Donation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_type\": \"donation\",\n  \"first_name\": \"Marie\",\n  \"last_name\": \"Martin\",\n  \"email\": \"marie.martin@example.com\",\n  \"message\": \"Je souhaite faire un don pour soutenir votre cause.\",\n  \"donation_amount\": 50,\n  \"donation_frequency\": \"monthly\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Crée une nouvelle soumission de type Donation"
+          }
+        },
+        {
+          "name": "Create Submission - Volunteer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_type\": \"volunteer\",\n  \"first_name\": \"Pierre\",\n  \"last_name\": \"Bernard\",\n  \"email\": \"pierre.bernard@example.com\",\n  \"message\": \"Je voudrais devenir bénévole.\",\n  \"skills\": \"Développement web, Design UI/UX\",\n  \"preferences\": \"Disponible les week-ends\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Crée une nouvelle soumission de type Bénévolat"
+          }
+        },
+        {
+          "name": "Create Submission - Information",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_type\": \"information\",\n  \"first_name\": \"Sophie\",\n  \"last_name\": \"Dubois\",\n  \"email\": \"sophie.dubois@example.com\",\n  \"message\": \"J'aimerais recevoir plus d'informations sur vos projets.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Crée une nouvelle soumission de type Information"
+          }
+        },
+        {
+          "name": "Update Submission",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Message mis à jour\",\n  \"donation_amount\": 100\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions/:id",
+              "host": ["{{base_url}}"],
+              "path": ["submissions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{submission_id}}",
+                  "description": "ID de la soumission à mettre à jour"
+                }
+              ]
+            },
+            "description": "Met à jour une soumission existante"
+          }
+        },
+        {
+          "name": "Delete Submission",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/submissions/:id",
+              "host": ["{{base_url}}"],
+              "path": ["submissions", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{submission_id}}",
+                  "description": "ID de la soumission à supprimer"
+                }
+              ]
+            },
+            "description": "Supprime une soumission"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test Scenarios",
+      "item": [
+        {
+          "name": "Invalid Submission - Missing Fields",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Test\",\n  \"email\": \"test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions",
+              "host": ["{{base_url}}"],
+              "path": ["submissions"]
+            },
+            "description": "Teste la validation avec des champs manquants (devrait retourner 400)"
+          }
+        },
+        {
+          "name": "Get Non-Existent Submission",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/submissions/000000000000000000000000",
+              "host": ["{{base_url}}"],
+              "path": ["submissions", "000000000000000000000000"]
+            },
+            "description": "Teste la récupération d'une soumission inexistante (devrait retourner 404)"
+          }
+        }
+      ]
+    }
+  ]
+}
