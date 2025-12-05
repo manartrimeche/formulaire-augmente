@@ -30,10 +30,10 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
   const [aiScore, setAiScore] = useState<{ quality: number; completeness: number; relevance: number } | null>(null);
 
   const missions = [
-    { id: 'independance' as MissionType, label: '🔓 Indépendance Numérique', icon: MessageCircle, description: 'Se libérer des Big Tech', color: 'emerald' },
-    { id: 'responsabilite' as MissionType, label: '⚖️ Responsabilité Éthique', icon: Heart, description: 'Protéger les données', color: 'teal' },
-    { id: 'durabilite' as MissionType, label: '🌍 Durabilité Environnementale', icon: Users, description: 'Réduire l\'empreinte carbone', color: 'green' },
-    { id: 'apprentissage' as MissionType, label: '📚 Apprentissage & Capacités', icon: Info, description: 'Former aux bonnes pratiques', color: 'lime' },
+    { id: 'independance' as MissionType, label: ' Indépendance Numérique', icon: MessageCircle, description: 'Se libérer des Big Tech', color: 'emerald' },
+    { id: 'responsabilite' as MissionType, label: ' Responsabilité Éthique', icon: Heart, description: 'Protéger les données', color: 'teal' },
+    { id: 'durabilite' as MissionType, label: ' Durabilité Environnementale', icon: Users, description: 'Réduire l\'empreinte carbone', color: 'green' },
+    { id: 'apprentissage' as MissionType, label: ' Apprentissage & Capacités', icon: Info, description: 'Former aux bonnes pratiques', color: 'lime' },
   ];
 
   // Calcul intelligent de la force du formulaire
@@ -96,23 +96,23 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
     }
     
     if (words.length < 20) {
-      suggestions.push('📝 Développez davantage vos idées pour un message plus convaincant');
+      suggestions.push('Développez davantage vos idées pour un message plus convaincant');
     }
     
     if (sentences.length === 1 && words.length > 15) {
-      suggestions.push('✨ Structurez votre message en plusieurs phrases pour plus de clarté');
+      suggestions.push('Structurez votre message en plusieurs phrases pour plus de clarté');
     }
     
     if (!message.includes('?') && missionType === 'apprentissage') {
-      suggestions.push('❓ N\'hésitez pas à poser des questions sur les formations disponibles');
+      suggestions.push(' N\'hésitez pas à poser des questions sur les formations disponibles');
     }
     
     if (foundKeywords.length >= 3) {
-      suggestions.push('🎯 Excellent ! Votre message est très pertinent pour cette mission');
+      suggestions.push(' Excellent ! Votre message est très pertinent pour cette mission');
     }
     
     if (quality >= 80 && completeness >= 70 && relevance >= 60) {
-      suggestions.push('🏆 Message de qualité exceptionnelle ! L\'IA valide votre candidature');
+      suggestions.push(' Message de qualité exceptionnelle ! L\'IA valide votre candidature');
     }
 
     setAiSuggestions(suggestions);
@@ -122,22 +122,18 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
   const getMissionInsights = (missionType: MissionType) => {
     const insights = {
       independance: {
-        icon: '🔓',
         tip: 'Conseil IA : Décrivez les outils Big Tech que vous souhaitez remplacer',
         keywords: ['Google Workspace', 'Microsoft 365', 'alternatives open-source', 'souveraineté']
       },
       responsabilite: {
-        icon: '⚖️',
         tip: 'Conseil IA : Mentionnez vos préoccupations en matière de RGPD',
         keywords: ['RGPD', 'consentement', 'protection des données', 'éthique']
       },
       durabilite: {
-        icon: '🌍',
         tip: 'Conseil IA : Parlez de vos objectifs de réduction carbone',
         keywords: ['empreinte carbone', 'énergie verte', 'recyclage', 'sobriété numérique']
       },
       apprentissage: {
-        icon: '📚',
         tip: 'Conseil IA : Précisez les compétences à développer',
         keywords: ['formation', 'certifications', 'ateliers', 'accompagnement']
       }
@@ -259,15 +255,13 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-3xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-              <Sparkles className="w-8 h-8 text-yellow-500 animate-pulse" />
               Rejoignez la Démarche NIRD
             </h2>
-            <p className="text-gray-600">Portail d'Intention Intelligent 🧠 • Année 2025</p>
+            <p className="text-gray-600">Portail d'Intention Intelligent • Année 2025</p>
           </div>
           {formStrength > 0 && (
             <div className="text-right">
               <div className="flex items-center gap-2 mb-1">
-                <Shield className="w-5 h-5 text-emerald-600" />
                 <span className="text-sm font-semibold text-gray-700">Force du profil</span>
               </div>
               <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -558,7 +552,7 @@ export default function IntentionForm({ onSubmit, isSubmitting }: IntentionFormP
         ) : (
           <>
             <Send className="w-5 h-5" />
-            {formStrength >= 80 ? '🚀 Lancer la Mission NIRD !' : 'Rejoindre NIRD'}
+            {formStrength >= 80 ? ' Lancer la Mission NIRD !' : 'Rejoindre NIRD'}
           </>
         )}
         {formStrength >= 80 && (

@@ -56,7 +56,7 @@ function App() {
           </h1>
         </div>
         <p className="text-xl text-gray-700 font-light">
-          🌱 Numérique Indépendant, Responsable et Durable<br/>
+         Numérique Indépendant, Responsable et Durable<br/>
           <span className="text-sm text-gray-600">Aidez votre établissement à se libérer des Big Tech</span>
         </p>
       </div>
@@ -70,22 +70,18 @@ function App() {
           </h3>
           <div className="grid md:grid-cols-4 gap-4 text-sm text-gray-600">
             <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-emerald-500">
-              <p className="font-semibold text-emerald-600 text-2xl mb-1">🔓</p>
               <p className="font-bold">Indépendance</p>
               <p className="text-xs mt-1">Moins dépendre des géants du web</p>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-teal-500">
-              <p className="font-semibold text-teal-600 text-2xl mb-1">⚖️</p>
               <p className="font-bold">Responsabilité</p>
               <p className="text-xs mt-1">Données et éthique numérique</p>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
-              <p className="font-semibold text-green-600 text-2xl mb-1">🌍</p>
               <p className="font-bold">Durabilité</p>
               <p className="text-xs mt-1">Impact environnemental réduit</p>
             </div>
             <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-lime-500">
-              <p className="font-semibold text-lime-600 text-2xl mb-1">📚</p>
               <p className="font-bold">Apprentissage</p>
               <p className="text-xs mt-1">Capacités et connaissances</p>
             </div>
